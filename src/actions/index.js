@@ -12,17 +12,4 @@ const removeBook = book => ({
   },
 });
 
-const changeFilter = name => ({
-  type: 'CHANGE_FILTER ',
-  payload: {
-    category: name,
-  },
-});
-
-const clearFilter = () => ({
-  type: 'CLEAR_FILTER ',
-});
-
-export {
-  createBook, removeBook, changeFilter, clearFilter,
-};
+export { createBook, removeBook };

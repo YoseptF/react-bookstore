@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { createBook } from '../actions/index';
 
-export const categories = [
+const categories = [
   'Action',
   'Biography',
   'History',
