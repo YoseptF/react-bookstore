@@ -17,6 +17,9 @@ const BookList = ({ books }) => (
         <td>
           Category
         </td>
+        <td>
+          Remove
+        </td>
       </tr>
     </th>
     {
