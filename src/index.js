@@ -1,10 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import bookReducer from './reducers/books';
+import './index.css';
 import App from './components/App';
-import store from './app/store';
 import * as serviceWorker from './serviceWorker';
+
+const initialState = {
+  books: [
+    {
+      id: Math.random(),
+      title: 'Game Of Thrones',
+      categories: 'History',
+    },
+    {
+      id: Math.random(),
+      title: 'The witcher',
+      categories: 'History',
+    },
+  ],
+};
+
+const store = createStore(bookReducer, initialState);
 
 ReactDOM.render(
   <React.StrictMode>
