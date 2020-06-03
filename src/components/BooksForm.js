@@ -1,5 +1,4 @@
 import React from 'react';
-import uid from 'uid';
 
 const BooksForm = () => {
   const categories = [
