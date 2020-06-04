@@ -53,9 +53,11 @@ class BooksForm extends React.Component {
     return (
       <form>
         <div className="inputCombo">
-          <label htmlFor="title">Add New Book</label>
+          <p htmlFor="title">Add New Book</p>
           <input
+            type="text"
             placeholder="New Book"
+            name="title"
             id="title"
             value={title}
             onChange={this.handleChangeTitle}

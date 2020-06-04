@@ -21,9 +21,9 @@ form .inputCombo {
   position: relative;
 }
 
-form .inputCombo label {
+form .inputCombo p {
   position: absolute;
-  top: -28px;
+  top: -49px;
   font-size: 1.5rem;
   font-weight: bold;
 }
