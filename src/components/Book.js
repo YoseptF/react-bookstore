@@ -11,7 +11,7 @@ const Book = ({ book, handleRemoveBook }) => (
 );
 
 Book.propTypes = {
-  book: PropTypes.objectOf(Book).isRequired,
+  book: PropTypes.objectOf(Object).isRequired,
   handleRemoveBook: PropTypes.func.isRequired,
 };
 

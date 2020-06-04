@@ -1,29 +1,25 @@
-const bookReducer = (state = {}, action) => {
+const bookReducer = (state = [], action) => {
   let index = -1;
   if (action.payload && action.payload.id) {
-    index = state.books.findIndex(book => book.id === action.payload.id);
+    index = state.findIndex(book => book.id === parseFloat(action.payload.id));
   }
 
   switch (action.type) {
     case 'CREATE_BOOK':
-      return {
-        ...state,
-        books: [...state.books, action.payload.book],
-      };
+      return [
+        ...state.books, action.payload.book,
+      ];
     case 'REMOVE_BOOK':
       if (index === -1) {
-        return { ...state };
+        return [...state];
       }
-      return {
-        ...state,
-        books: [
-          ...state.books.slice(0, index),
-          ...state.books.slice(index + 1),
-        ],
-      };
+      return [
+        ...state.slice(0, index),
+        ...state.slice(index + 1),
+      ];
 
     default:
-      return { ...state };
+      return [...state];
   }
 };
 

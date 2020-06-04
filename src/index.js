@@ -7,22 +7,28 @@ import './index.css';
 import App from './components/App';
 
 const initialState = {
-  filter: 'ALL',
+  filter: {
+    currentFilter: 'ALL',
+  },
   books: [
     {
       id: Math.random(),
       title: 'Game Of Thrones',
-      categories: 'History',
+      category: 'History',
     },
     {
       id: Math.random(),
       title: 'The witcher',
-      categories: 'History',
+      category: 'History',
     },
   ],
 };
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(
+  rootReducer,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
 
 ReactDOM.render(
   <React.StrictMode>

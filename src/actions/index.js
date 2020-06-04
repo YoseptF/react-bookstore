@@ -5,22 +5,22 @@ const createBook = book => ({
   },
 });
 
-const removeBook = book => ({
+const removeBook = id => ({
   type: 'REMOVE_BOOK',
   payload: {
-    id: book.id,
+    id,
   },
 });
 
 const changeFilter = name => ({
-  type: 'CHANGE_FILTER ',
+  type: 'CHANGE_FILTER',
   payload: {
     category: name,
   },
 });
 
 const clearFilter = () => ({
-  type: 'CLEAR_FILTER ',
+  type: 'CLEAR_FILTER',
 });
 
 export {

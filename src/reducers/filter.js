@@ -1,14 +1,16 @@
 const filterReducer = (state = {}, action) => {
+  console.log(action);
   switch (action.type) {
     case 'CHANGE_FILTER':
       return {
         ...state,
-        filter: action.payload.category,
+        currentFilter: action.payload.category,
       };
     case 'CLEAR_FILTER':
+      console.log('state', state);
       return {
         ...state,
-        filter: 'ALL',
+        currentFilter: 'ALL',
       };
 
     default:

@@ -24,24 +24,26 @@ const BookList = ({ books, dispatch, filter }) => {
     <>
       <CategoryFilter changeCategoryHandler={changeCategoryHandler} />
       <table>
-        <th>
+        <thead>
           <tr>
-            <td>
+            <th>
               ID
-            </td>
-            <td>
+            </th>
+            <th>
               Title
-            </td>
-            <td>
+            </th>
+            <th>
               Category
-            </td>
+            </th>
           </tr>
-        </th>
-        {
-          Object.values(books)
-            .filter(book => book.category === filter || filter === 'ALL')
-            .map(book => <Book book={book} handleRemoveBook={handleRemoveBook} key={book.id} />)
-        }
+        </thead>
+        <tbody>
+          {
+            books
+              .filter(book => book.category === filter.currentFilter || filter.currentFilter === 'ALL')
+              .map(book => <Book book={book} handleRemoveBook={handleRemoveBook} key={book.id} />)
+          }
+        </tbody>
       </table>
     </>
   );
@@ -50,7 +52,7 @@ const BookList = ({ books, dispatch, filter }) => {
 BookList.propTypes = {
   books: PropTypes.arrayOf(Object).isRequired,
   dispatch: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
+  filter: PropTypes.objectOf(Object).isRequired,
 };
 
 const mapStateToProps = state => ({
