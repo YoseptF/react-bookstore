@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import propTypes from 'prop-types';
+import { createBook } from '../actions/index';
 
 const categories = [
   'Action',
@@ -17,14 +20,37 @@ class BooksForm extends React.Component {
       title: '',
       category: '',
     };
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+  }
+
+  handleChangeTitle(e) {
+    this.setState({
+      title: e.target.value,
+    });
+  }
+
+  handleChangeCategory(e) {
+    this.setState({
+      category: e.target.value,
+    });
+  }
+
+  handleSubmit() {
+    const { title, category } = this.state;
+    const { dispatch } = this.props;
+    dispatch(createBook({
+      id: Math.floor(Math.random() * 100),
+      title,
+      category,
+    }));
   }
 
   render() {
     const { title, category } = this.state;
     return (
       <form>
-        <input id="title" value={title} />
-        <select value={category}>
+        <input id="title" value={title} onChange={this.handleChangeTitle} />
+        <select value={category} onChange={this.handleChangeCategory}>
           {
             categories.map(cat => (
               <option key={cat}>
@@ -38,4 +64,8 @@ class BooksForm extends React.Component {
   }
 }
 
-export default BooksForm;
+BooksForm.propTypes = {
+  dispatch: propTypes.func.isRequired,
+};
+
+export default connect(null, null)(BooksForm);
