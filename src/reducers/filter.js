@@ -1,5 +1,4 @@
 const filterReducer = (state = {}, action) => {
-  console.log(action);
   switch (action.type) {
     case 'CHANGE_FILTER':
       return {
@@ -7,7 +6,6 @@ const filterReducer = (state = {}, action) => {
         currentFilter: action.payload.category,
       };
     case 'CLEAR_FILTER':
-      console.log('state', state);
       return {
         ...state,
         currentFilter: 'ALL',
