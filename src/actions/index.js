@@ -5,11 +5,24 @@ const createBook = book => ({
   },
 });
 
-const removeBook = id => ({
+const removeBook = book => ({
   type: 'REMOVE_BOOK',
   payload: {
-    id,
+    id: book.id,
   },
 });
 
-export { createBook, removeBook };
+const changeFilter = name => ({
+  type: 'CHANGE_FILTER ',
+  payload: {
+    category: name,
+  },
+});
+
+const clearFilter = () => ({
+  type: 'CLEAR_FILTER ',
+});
+
+export {
+  createBook, removeBook, changeFilter, clearFilter,
+};

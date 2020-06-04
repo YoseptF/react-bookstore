@@ -7,6 +7,7 @@ import './index.css';
 import App from './components/App';
 
 const initialState = {
+  filter: 'ALL',
   books: [
     {
       id: Math.random(),
