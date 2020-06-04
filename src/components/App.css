@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.selector nav {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
+}
+
+.selector nav > div {
+  display: flex;
+  align-items: center;
+  width: 20vw;
+  justify-content: space-between;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

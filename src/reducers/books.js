@@ -7,7 +7,7 @@ const bookReducer = (state = [], action) => {
   switch (action.type) {
     case 'CREATE_BOOK':
       return [
-        ...state.books, action.payload.book,
+        ...state, action.payload.book,
       ];
     case 'REMOVE_BOOK':
       if (index === -1) {

@@ -23,28 +23,13 @@ const BookList = ({ books, dispatch, filter }) => {
   return (
     <>
       <CategoryFilter changeCategoryHandler={changeCategoryHandler} />
-      <table>
-        <thead>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>
-              Title
-            </th>
-            <th>
-              Category
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            books
-              .filter(book => book.category === filter.currentFilter || filter.currentFilter === 'ALL')
-              .map(book => <Book book={book} handleRemoveBook={handleRemoveBook} key={book.id} />)
-          }
-        </tbody>
-      </table>
+      <ul>
+        {
+          books
+            .filter(book => book.category === filter.currentFilter || filter.currentFilter === 'ALL')
+            .map(book => <Book book={book} handleRemoveBook={handleRemoveBook} key={book.id} />)
+        }
+      </ul>
     </>
   );
 };

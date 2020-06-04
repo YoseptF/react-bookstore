@@ -1,0 +1,41 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+  list-style: none;
+  margin: 8px;
+  padding: 12px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+li .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+  background: lightblue;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: blue;
+  color: white;
+}
+
+li .left{
+  display: flex;
+  flex-direction: column;
+
+}
