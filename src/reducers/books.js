@@ -1,6 +1,6 @@
 const bookReducer = (state = {}, action) => {
   let index = -1;
-  if (action.payload.id) {
+  if (action.payload && action.payload.id) {
     index = state.books.findIndex(book => book.id === action.payload.id);
   }
 
