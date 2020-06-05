@@ -20,22 +20,21 @@ class BooksForm extends React.Component {
       title: '',
       category: '',
     };
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChangeTitle(e) {
+  handleChange(event) {
+    const { name } = event.target;
+    const { state } = this;
+
     this.setState({
-      title: e.target.value,
+      ...state,
+      [name]: event.target.value,
     });
   }
 
-  handleChangeCategory(e) {
-    this.setState({
-      category: e.target.value,
-    });
-  }
-
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     const { title, category } = this.state;
     const { dispatch } = this.props;
     dispatch(createBook({
@@ -43,14 +42,18 @@ class BooksForm extends React.Component {
       title,
       category,
     }));
+    this.setState({
+      title: '',
+      category: 'ALL',
+    });
   }
 
   render() {
     const { title, category } = this.state;
     return (
       <form>
-        <input id="title" value={title} onChange={this.handleChangeTitle} />
-        <select value={category} onChange={this.handleChangeCategory}>
+        <input id="title" value={title} onChange={this.handleChange} />
+        <select value={category} onChange={this.handleChange}>
           {
             categories.map(cat => (
               <option key={cat}>
@@ -59,6 +62,7 @@ class BooksForm extends React.Component {
             ))
           }
         </select>
+        <button type="submit" onClick={this.handleSubmit}>New Book</button>
       </form>
     );
   }
