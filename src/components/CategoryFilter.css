@@ -1,0 +1,11 @@
+.filter {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.filter select {
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 4px;
+}
