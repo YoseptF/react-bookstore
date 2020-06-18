@@ -1,26 +1,13 @@
-const bookReducer = (state = [], action) => {
-  let index = -1;
-  if (action.payload && action.payload.id) {
-    index = state.findIndex(book => book.id === parseFloat(action.payload.id));
-  }
+import { createReducer } from '@reduxjs/toolkit';
 
-  switch (action.type) {
-    case 'CREATE_BOOK':
-      return [
-        ...state, action.payload.book,
-      ];
-    case 'REMOVE_BOOK':
-      if (index === -1) {
-        return [...state];
-      }
-      return [
-        ...state.slice(0, index),
-        ...state.slice(index + 1),
-      ];
-
-    default:
-      return [...state];
-  }
-};
+const bookReducer = createReducer(
+  [],
+  {
+    CREATE_BOOK: (state, action) => { state.push(action.payload); },
+    REMOVE_BOOK: (state, action) => {
+      state.splice(action.payload, 1);
+    },
+  },
+);
 
 export default bookReducer;

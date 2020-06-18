@@ -1,27 +1,34 @@
-const createBook = book => ({
-  type: 'CREATE_BOOK',
-  payload: {
-    book,
-  },
-});
+import { createAction } from '@reduxjs/toolkit';
 
-const removeBook = id => ({
-  type: 'REMOVE_BOOK',
-  payload: {
-    id,
-  },
-});
+const createBook = createAction('CREATE_BOOK');
+const removeBook = createAction('REMOVE_BOOK');
+const changeFilter = createAction('CHANGE_FILTER');
+const clearFilter = createAction('CLEAR_FILTER');
 
-const changeFilter = name => ({
-  type: 'CHANGE_FILTER',
-  payload: {
-    category: name,
-  },
-});
+// const createBook = book => ({
+//   type: 'CREATE_BOOK',
+//   payload: {
+//     book,
+//   },
+// });
 
-const clearFilter = () => ({
-  type: 'CLEAR_FILTER',
-});
+// const removeBook = id => ({
+//   type: 'REMOVE_BOOK',
+//   payload: {
+//     id,
+//   },
+// });
+
+// const changeFilter = name => ({
+//   type: 'CHANGE_FILTER',
+//   payload: {
+//     category: name,
+//   },
+// });
+
+// const clearFilter = () => ({
+//   type: 'CLEAR_FILTER',
+// });
 
 export {
   createBook, removeBook, changeFilter, clearFilter,

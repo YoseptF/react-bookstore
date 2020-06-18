@@ -1,19 +1,10 @@
-const filterReducer = (state = {}, action) => {
-  switch (action.type) {
-    case 'CHANGE_FILTER':
-      return {
-        ...state,
-        currentFilter: action.payload.category,
-      };
-    case 'CLEAR_FILTER':
-      return {
-        ...state,
-        currentFilter: 'ALL',
-      };
+/* eslint-disable no-param-reassign */
+import { createReducer } from '@reduxjs/toolkit';
 
-    default:
-      return state;
-  }
-};
+const filterReducer = createReducer({},
+  {
+    CHANGE_FILTER: (state, action) => { state.currentFilter = action.payload; },
+    CLEAR_FILTER: state => { state.currentFilter = 'All'; },
+  });
 
 export default filterReducer;

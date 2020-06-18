@@ -1,11 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Book from '../components/Book';
 import CategoryFilter from '../components/CategoryFilter';
 import { removeBook, changeFilter, clearFilter } from '../actions';
 
-const BookList = ({ books, dispatch, filter }) => {
+const BookList = () => {
+  const books = useSelector(state => state.books);
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
   const handleRemoveBook = e => {
     const { id } = e.currentTarget.dataset;
     dispatch(removeBook(id));
@@ -26,7 +28,7 @@ const BookList = ({ books, dispatch, filter }) => {
       <ul>
         {
           books
-            .filter(book => book.category === filter.currentFilter || filter.currentFilter === 'ALL')
+            .filter(book => book.category === filter.currentFilter || filter.currentFilter === 'All')
             .map(book => <Book book={book} handleRemoveBook={handleRemoveBook} key={book.id} />)
         }
       </ul>
@@ -34,15 +36,4 @@ const BookList = ({ books, dispatch, filter }) => {
   );
 };
 
-BookList.propTypes = {
-  books: PropTypes.arrayOf(Object).isRequired,
-  dispatch: PropTypes.func.isRequired,
-  filter: PropTypes.objectOf(Object).isRequired,
-};
-
-const mapStateToProps = state => ({
-  books: state.books,
-  filter: state.filter,
-});
-
-export default connect(mapStateToProps)(BookList);
+export default BookList;

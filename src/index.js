@@ -1,14 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers/index';
 import './index.css';
 import App from './components/App';
 
 const initialState = {
   filter: {
-    currentFilter: 'ALL',
+    currentFilter: 'All',
   },
   books: [
     {
@@ -24,10 +24,10 @@ const initialState = {
   ],
 };
 
-const store = createStore(
-  rootReducer,
-  initialState,
-);
+const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: initialState,
+});
 
 ReactDOM.render(
   <React.StrictMode>
